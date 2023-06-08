@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container mb-5">
+        <div class="row mt-5">
+            <div class="col-12 col-md-6 bg-light p-5 my-auto">
+                <h4 class="fw-light">FEATURED PRODUCT</h4>
+                <h3 class="fs-1">{{productInfo.product_name}}</h3>
+                <p class="fs-3 fw-light">{{productInfo.product_descriptions}}</p>
+                <div class="d-flex justify-content-around">
+                    <p>Material : {% for material in productInfo.product_material.all %} {{material}} {% endfor %}</p>
+                    <p>Color : {% for color in productInfo.product_color.all %} {{color}} {% endfor %} </p>
+                    <p>Legs: {{productInfo.product_legs}} </p>
+                    <p>Pillows: {{productInfo.product_pillows}}</p>
+                </div>
+                <p class="fw-bolder fs-3">${{productInfo.product_price}}</p>
+            </div>
+            <div class="col-12 col-md-6 d-flex justify-content-center align-content-center">
+                <img src="{{productInfo.product_image.url}}" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock %}
