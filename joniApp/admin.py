@@ -7,4 +7,5 @@ admin.site.register(Product)
 admin.site.register(Testimonial)
 admin.site.register(Color)
 admin.site.register(Material)
-
+admin.site.register(Category)
+admin.site.register(Cotact)

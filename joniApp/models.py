@@ -17,6 +17,14 @@ class Material(models.Model):
     def __str__(self):
         return f'{self.material_name}'
 
+
+class Category(models.Model):
+    category_name = models.CharField(max_length=60, null=True, blank=True)
+    category_image = models.ImageField(upload_to='product/')
+
+    def __str__(self):
+        return f'{self.category_name}'
+
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=60, null=True, blank=True)
@@ -28,7 +36,7 @@ class Product(models.Model):
     product_image = models.ImageField(upload_to='product/')
     product_color = models.ManyToManyField(Color)
     product_material = models.ManyToManyField(Material)
-
+    product_category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f'{self.product_name}'
@@ -43,3 +51,13 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return f'{self.testimonial_id}'
+
+
+class Cotact(models.Model):
+    contact_name = models.CharField(max_length=60, null=True, blank=True)
+    contact_surname = models.CharField(max_length=60, null=True, blank=True)
+    contact_email = models.EmailField(null=True, blank=True)
+    contact_comment = models.TextField(max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.contact_name} {self.contact_surname}'

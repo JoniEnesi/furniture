@@ -22,8 +22,9 @@
                             Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Chair</a></li>
-                            <li><a class="dropdown-item" href="#>Sofa</a></li>
+                            {% for cat in categories %}
+                            <li><a class="dropdown-item" href="{% url 'category' cat.pk %}">{{cat.category_name}}</a></li>
+                            {% endfor %}
                         </ul>
                     </li>
                     <li class="nav-item px-3">
